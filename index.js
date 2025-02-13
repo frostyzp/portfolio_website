@@ -1,35 +1,34 @@
+let isDrawing = false;
+let x = 0;
+let y = 0;
 
+const drawingArea = document.getElementById('drawing-area');
+const canvas = document.createElement('canvas');
+canvas.width = drawingArea.offsetWidth;
+canvas.height = drawingArea.offsetHeight;
+drawingArea.appendChild(canvas);
 
+const ctx = canvas.getContext('2d');
 
-// module aliases
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Runner = Matter.Runner,
-    Bodies = Matter.Bodies,
-    Composite = Matter.Composite;
-
-// create an engine
-var engine = Engine.create();
-
-// create a renderer
-var render = Render.create({
-    element: document.body,
-    engine: engine
+canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [x, y] = [e.offsetX, e.offsetY];
 });
 
-// create two boxes and a ground
-var boxA = Bodies.rectangle(400, 200, 80, 80);
-var boxB = Bodies.rectangle(450, 50, 80, 80);
-var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+canvas.addEventListener('mousemove', (e) => {
+    if (isDrawing) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [x, y] = [e.offsetX, e.offsetY];
+    }
+});
 
-// add all of the bodies to the world
-Composite.add(engine.world, [boxA, boxB, ground]);
+canvas.addEventListener('mouseup', () => {
+    isDrawing = false;
+});
 
-// run the renderer
-Render.run(render);
-
-// create runner
-var runner = Runner.create();
-
-// run the engine
-Runner.run(runner, engine);
+canvas.addEventListener('mouseout', () => {
+    isDrawing = false;
+});
