@@ -1,0 +1,100 @@
+.flex-block {
+    display: flex;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.aboutdiv {
+    width: 33.33%;
+    padding: 20px;
+}
+
+.bodyparagraph.about {
+    margin-bottom: 40px;
+}
+
+.w-layout-grid {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+}
+
+.gridillustration {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.drawing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-29, .image-30 {
+    max-width: 100%;
+}
+
+.project-description-2 {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.project-description-2 span {
+    /* font-weight: bold; */
+}
+
+.grid-15.about {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.linkedimages {
+    width: 100%;
+    max-width: 150px;
+    transition: transform 0.3s;
+}
+
+.linkdescription {
+    margin-bottom: 10px;
+}
+
+/* Navigation styles */
+.navigation-2 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+}
+
+.navigation-wrap-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-2 {
+    display: flex;
+}
+
+.menu-item-wapper-2 {
+    margin: 0 15px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991px) {
+    .flex-block {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .aboutdiv {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+}

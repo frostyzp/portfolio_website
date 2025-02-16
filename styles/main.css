@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'CommitMono';
+    /* src: url('fonts/CommitMono-400-Regular.otf') format('opentype'); */
+    src: url('fonts/CommitMono-400-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+/Users/arinp/Documents/GitHub/portfolio_website/fonts
+}
+
+@font-face {
+    font-family: 'ABCMonumentGrotesk';
+    src: url('fonts/ABCMonumentGrotesk-Medium-Trial.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+    font-family: 'ABCMonumentGrotesk', sans-serif;
+    display: flex;
+    margin: 0;
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'CommitMono', sans-serif;
+    color: grey;
+    text-transform: uppercase;
+}
+
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 250px; /* Fixed width for the sidebar */
+    height: 100vh;
+    padding: 20px;
+    /* background-color: #f4f4f4; */
+    overflow-y: auto;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    outline: 1px dashed rgb(167, 167, 167);
+    outline-offset: 12px;
+
+}
+
+.penImg {
+    scale: 2.6;
+    padding-top: 5rem;
+    text-align: center;
+
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+    background: linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px), 
+                linear-gradient(180deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#drawing-area {
+    width: 50%;
+    height: 50vh;
+    position: relative; /* Ensure proper canvas positioning */
+    cursor: url('creative/pen.png') 8 40, none;
+    text-align: center;
+}
+
+.penImg {
+    width: 20%;
+    user-select: none;
+    pointer-events: none;
+    position: absolute; /* Ensure it doesn't interfere with the drawing */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.sidebar p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.contact {
+    /* display: flex; */
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-family: 'CommitMono';
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+.contact span {
+    cursor: pointer;
+    color: grey;
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+}
+
+.headers {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: left;
+    color: grey;
+    font-weight: 300;
+    font-family: 'CommitMono';
+    text-transform: uppercase;
+
+}
+
+p {
+    text-align: left;
+    margin-top: 20px;
+    color: grey;
+
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a {
+    text-decoration: underline;
+    color: grey;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.image-text-container {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 20px; */
+}
+
+.image-text {
+    text-align: left;
+    width: 48%;
+}
+
+.image-text video,
+.image-text img {
+    width: 100%; /* Ensures both elements take the full width of their container */
+    height: 20rem; /* Set a fixed height to ensure consistency */
+    object-fit: cover; /* Prevents distortion and maintains aspect ratio */
+    display: block; /* Ensures proper spacing */
+}
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 1rem; /* Space between items */
+    width: 100%; /* Ensure it spans full width */
+    max-width: 100vw; /* Prevent it from exceeding the viewport width */
+    box-sizing: border-box; /* Ensures no overflow due to padding */
+    margin: 0 auto; /* Center it within the viewport */
+}
+
+.masonry-item {
+    width: 100%; /* Ensures items fit their grid cell */
+    height: auto; /* Allows items to adjust their height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+}
+
+.masonry-item img,
+.masonry-item video {
+    width: 100%; /* Ensures media fit within their container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure content is fully visible without cropping */
+    display: block; /* Prevents extra space below media */
+}
+
+.masonry-item p {
+    text-align: left;
+    font-size: 14px;
+}
+
+.text-row {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.grid-image {
+    width: 100%;
+    height: 300px; /* Adjust as needed */
+    object-fit: cover;
+}
+
+.large-image {
+    width: 100%;
+    max-height: 500px; /* Adjust as needed */
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+#playzone {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.disk {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    -webkit-mask-image: url(https://i.postimg.cc/3RYpcLqS/14.png);
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    }
+    
+    .disk {
+            animation-name: spin;
+            animation-timing-function: linear;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg) }
+            to { transform: rotate(360deg) }
+        }
