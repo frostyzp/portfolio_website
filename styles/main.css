@@ -4,7 +4,6 @@
     src: url('fonts/CommitMono-400-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-/Users/arinp/Documents/GitHub/portfolio_website/fonts
 }
 
 @font-face {
@@ -100,7 +99,7 @@ canvas {
 .contact span {
     cursor: pointer;
     color: grey;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 a {
@@ -119,10 +118,18 @@ a {
 }
 
 p {
-    text-align: left;
-    margin-top: 20px;
-    color: grey;
+    /* Remove these styles as they'll be inherited from styles.css */
+    /* text-align: left; */
+    /* margin-top: 20px; */
+    /* color: grey; */
+}
 
+/* Keep special case styles */
+.contact p {
+    font-family: 'CommitMono';
+    font-size: 12px;
+    text-transform: uppercase;
+    color: grey;
 }
 
 ul {
@@ -135,12 +142,12 @@ ul li {
 }
 
 ul li a {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     color: grey;
 }
 
 ul li a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .image-text-container {

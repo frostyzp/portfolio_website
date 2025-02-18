@@ -6,10 +6,6 @@
     <title>RoMo - UX Case Study</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/main.css">
-
-    <style>
-
-    </style>
 </head>
 <body>
     <div id="sidebar-placeholder"></div>
@@ -20,8 +16,6 @@
             <video autoplay loop muted playsinline class="hero-video">
                 <source src="main_img/ogp_main.mp4" type="video/mp4">
             </video>
-            <div class="hero-content">
-            </div>
         </section>
 
         <!-- Project Info -->
@@ -30,15 +24,15 @@
 
             <div class="info-grid">
                 <div class="info-item">
-                    <h3>Timeline</h3>
+                    <h2>Timeline</h2>
                     <p>2 months</p>
                 </div>
                 <div class="info-item">
-                    <h3>Collaborators</h3>
+                    <h2>Collaborators</h2>
                     <p>1 Engineer<br>1 Product Manager<br>1 Design Manager</p>
                 </div>
                 <div class="info-item">
-                    <h3>Constraints</h3>
+                    <h2>Constraints</h2>
                     <p>Scarce engineering bandwidth<br>User testing opportunities</p>
                 </div>
             </div>
@@ -58,37 +52,33 @@
         
         <div class="context-cards">
             <div class="context-card">
-                <img src="opg_main.mp4" alt="Roster icon" class="card-icon">
+                <img src="romo/ogp/ogp_icon.png" alt="Roster icon" class="card-icon">
                 <h3>Roster</h3>
                 <p>A roster is a schedule or list that outlines the assignment of tasks, shifts, or responsibilities for a group of people.</p>
             </div>
             <div class="context-card">
-                <img src="opg_main.mp4" alt="Roster planner icon" class="card-icon">
+                <img src="romo/ogp/ogp_icon2.png" alt="Roster planner icon" class="card-icon">
                 <h3>Roster Planner</h3>
                 <p>A person that uses tools/systems to manage and organize employee schedules/rosters.</p>
             </div>
         </div>
 
         <div class="section-lead">Rosters are governed by algorithms, and logical "rules" to follow</div>
-        <video class="context-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
-        </video>
+            <img src="romo/ogp/ogp_examplerroster.png" type="image/png">
 
         <div class="section-lead">A B2B roster generation tool for public sector roster planners in Singapore</div>
         <p>Roster monster helps roster planners in the public sector create a first draft of a roster more efficiently. The algorithm takes into consideration a set of rules, scheduled shifts and staff requests, which roster planners set-up manually.</p>
-        <video class="context-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
-        </video>
+        <img src="romo/ogp/ogp_diagram.png" type="image/png">
 
         <h3>Why such a product/solution?</h3>
         <p>In public sectors such as healthcare, roster planning can be highly complex, time consuming, and mentally draining. Enterprise software and solutions are costly, and not flexible enough for roster planning. To further justify these as a designer on the product:</p>
         
-        <div class="goal-cards">
-            <div class="goal-card">
+        <div class="concept-cards">
+            <div class="concept-card">
                 <h4>Business goals</h4>
                 <p>Save time and business costs on enterprise softwares, allowing roster planners to focus on more / other important work.</p>
             </div>
-            <div class="goal-card">
+            <div class="concept-card">
                 <h4>Design goals</h4>
                 <p>Reduce the human errors from manual rostering whilst giving enough clarity to the automated processes.</p>
             </div>
@@ -102,9 +92,8 @@
         <p>When a normally manual process is automated, roster planners lose the insight to easily identifiable information for the tradeoffs are made.</p>
         <p class="section-lead">This led to manual, time consuming workarounds when evaluating if a generated roster is good and fair enough for the staff rostered.</p>
         <p>The automation process leaves the roster planner completely out of the loop when creating a roster.</p>
-        <video class="problem-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
-        </video>
+        <img src="romo/ogp/ogp_roster_diagram.png" type="image/png">
+
     </section>
 
     <!-- Solution Section -->
@@ -113,14 +102,25 @@
         <p class="section-lead">A generated roster summary view of rule violations</p>
         <p>Roster planners can now look, identify, and assess the severity of roster planner defined rules (constraints) that have not been met in the generated roster.</p>
         <video class="solution-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
+            <source src="main_img/ogp_main.mp4" type="video/mp4">
         </video>
 
         <p class="section-lead">Animated loading state for E2E workflow</p>
         <p>In addition to the summary view, I added transparency to the generation time, time estimate, and a simple loading animation, exported as a Lottie file.</p>
-        <video class="solution-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
-        </video>
+        <img src="romo/ogp/ogp_animation.gif" class="solution-video">
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <h2>Impact of Design Solution</h2>
+        <h3>Impact on time and effort for roster planners</h3>
+        <p>As the product is still in it's early MVP development, we weren't able to get qualitative metrics. We were still able to hear how roster planners have been using the product:</p>
+        
+        <div class="impact-quote">
+            <p class="h2">From a power user –</p>
+            <h3>"1 week's worth of time can be reduced to 5 hours – 2 hours for inputting on Roster Monster, 3 hours on my spreadsheet."</h3>
+            <cite>– Roster planner from Emergency Medicine Department, Singapore General Hospital</cite>
+        </div>
     </section>
 
     <!-- Research Section -->
@@ -130,14 +130,17 @@
         <p>Roster planners need 3 types of rule information to evaluate the generated roster</p>
         <p>One of the insights we discovered was what about information about rules was important to see.</p>
         
-        <div class="example-card">
-            <h4>Example use case:</h4>
+        <div class="concept-card">
+            <h3>Example use case:</h3>
             <p>If roster isn't able to fulfill a '20 staff per day' rule, a roster planner would need to know where (i.e. Monday) and degree (i.e. only 18 staff were rostered).</p>
         </div>
         
-        <video class="research-video" autoplay loop muted playsinline>
-            <source src="opg_main.mp4" type="video/mp4">
-        </video>
+        <img src="romo/ogp/ogp_insight.png" class="solution-video">
+
+        <p>I led semi structured interviews to further understand this process with various government stakeholders.</p>
+        <img src="romo/ogp/ogp_research.png" class="solution-video">
+
+
     </section>
 
     <!-- Design Exploration Section -->
@@ -160,7 +163,67 @@
                 <p>Drawer modal</p>
             </div>
         </div>
+
+        <img src="romo/ogp/ogp_scenario.png" class="solution-video">
+
+        <!-- -->
+        <p class="section-lead"> Finding an 'MVP' conceot to work on first</p>
+        <p>Roster planners liked the summary view the most, but it was also important to see the roster in view.</p>
+        <img src="romo/ogp/ogp_winner.png" class="solution-video">
+
+        <h2>FUTURE SCOPING, PRODUCT ROADMAPPING</h2>
+        <p class="section-lead">Will building this feature amongst others move the needle?</p>
+        <p>As I was the only full time designer onboard, I needed to justify with my engineer that the feature was worth pushing out after the research and deign I would be undergoing.</p>
+        <img src="romo/ogp/ogp_mrf.png" class="solution-video">
+        <p>Hearing the user challenges through interviews and our feedback loop helped me justify the decision (with good confidence) to push for a high impact, high effort feature.</p>
+        <img src="romo/ogp/ogp_feature_impact.png" class="solution-video">
+
+
+
+
     </section>
+
+    <section class="design-exploration">
+        <h2>DESIGN DETAIL CONSIDERATIONS</h2>
+        <p class="section-lead">Focusing on the most important, relevant rule violation information</p>
+        <p>From interviews and shadowing, they generally look out for information in this order. For example, if a roster isn’t able to fulfill a ‘20 staff per day’ rule, a roster planner would need to know where (i.e. Monday) and degree (i.e. only 18 staff were rostered). </p>
+        <img src="romo/ogp/ogp_table.png" class="solution-video">
+
+        <p> Some keys ingishts from the usability tests:</p>
+
+        <div class="concept-cards">
+            <div class="concept-card">
+                <h4>No table headers looks, feels cleaner</h4>
+                <p>Table header information was not relevant and took up unnecessary space to roster planners.</p>
+            </div>
+            <div class="concept-card">
+                <h4>Accordion helps with showing relevant info</h4>
+                <p>Accordion worked well as intended, allowing focus on specific rule violations.</p>
+            </div>
+            <div class="concept-card">
+                <h4>Info hierarchy can be a bit tough to navigate</h4>
+                <p>Grids helped, already quite a lot of text to process. Hierarchy was not as clear.</p>
+            </div>
+        </div>
+
+        Being intentional with whitespace and visual clutter
+
+        <p>I focused a lot on using the right type size, colors, and even spacing to create an information hierarchy akin to how roster planners would need to see the information.</p>
+        <img src="romo/ogp/ogp_finaliteration.png" class="solution-video">
+
+        <h2>INTERACTION DESIGN CONSIDERATIONS</h2>
+        <p class="section-lead">Maximising the view for roster planners</p>
+        <p>During a testing session, I noted that a roster planner would ideally like to see both the roster and the drawer summary for reference. This meant hiding irrelevant information, such as hiding sidebar by default.</p>
+        <img src="romo/ogp/ogp_hide_sidebar.png" class="solution-video">
+
+        <h2>HIGHER LEVEL DESIGN FLOW, EDGE CASES</h2>
+        <p class="section-lead">Bringing clarity to the backend roster generation process</p>
+        <p>Generating a roster can take up to 5 minutes, conveyed through the spinning circle of death. I spared an hour to quickly create a pop-up modal with a simple animation using After Effects and additional copywriting, which my engineer could easily implement in minutes.</p>
+        <img src="romo/ogp/ogp_time.png" class="solution-video">
+        <img src="romo/ogp/ogp_animation_iteration.gif" class="solution-video">
+
+    </section>
+    
 
     <!-- Reflection Section -->
     <section class="reflection-section">
@@ -175,20 +238,11 @@
                 <p>Often times hearing from the user is ideal, but I don't always have access to them especially with a small user base. I learnt how to prepare and present my work amongst designers which gave me invaluable feedback on explorations, design details, and other considerations. This taught me to organise types of feedback given and build confidence to share designs in various types of fidelity.</p>
             </div>
         </div>
+        <img src="romo/ogp/ogp_inperson.png" class="solution-video">
+
     </section>
 
-    <!-- Impact Section -->
-    <section class="impact-section">
-        <h2>Impact of Design Solution</h2>
-        <h3>Impact on time and effort for roster planners</h3>
-        <p>As the product is still in it's early MVP development, we weren't able to get qualitative metrics. We were still able to hear how roster planners have been using the product:</p>
-        
-        <div class="impact-quote">
-            <p class="quote-context">From a power user –</p>
-            <p class="quote-text">"1 week's worth of time can be reduced to 5 hours – 2 hours for inputting on Roster Monster, 3 hours on my spreadsheet."</p>
-            <cite>– Roster planner from Emergency Medicine Department, Singapore General Hospital</cite>
-        </div>
-    </section>
+
 
        <!-- Navigation -->
        <nav class="case-study-nav">

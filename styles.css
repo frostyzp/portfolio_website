@@ -102,17 +102,25 @@ body {
     align-items: center;
 }
 
+.main-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
-    height: 100vh;
+    margin-top: 4rem;
+    /* height: 100vh; */
     overflow: hidden;
 }
 
 .hero-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .hero-content {
@@ -135,7 +143,7 @@ body {
 .design-exploration,
 .reflection-section,
 .impact-section {
-    padding: 6rem 2rem;
+    padding: 2rem 2rem;
     max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
@@ -152,9 +160,10 @@ body {
 .goal-cards,
 .concept-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
-    margin: 3rem 0;
+    width: 100%;
+    margin: 2rem 0;
 }
 
 /* Cards */
@@ -166,6 +175,9 @@ body {
     padding: 2rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-icon {
@@ -181,15 +193,37 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
-.section-lead {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
+h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Update paragraph styles to match about page */
+p {
+    font-size: 14px;
     color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'ABCMonumentGrotesk', sans-serif;
+}
+
+/* Keep special paragraph styles */
+.section-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    width: 75%;
+    color: var(--text-primary);
+}
+
+/* Keep dark section paragraph color override */
+.dark p {
+    color: var(--text-light);
 }
 
 /* Dark Section */
@@ -246,6 +280,7 @@ cite {
     padding: 2rem;
     max-width: var(--max-width);
     margin: 0 auto;
+    width: 100%;
 }
 
 .prev-link,
@@ -255,6 +290,7 @@ cite {
     gap: 0.5rem;
     text-decoration: none;
     color: var(--text-primary);
+    /* min-width: fit-content; */
 }
 
 .nav-arrow {
@@ -297,7 +333,7 @@ cite {
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
     
     .section-lead {
@@ -313,7 +349,7 @@ cite {
     .design-exploration,
     .reflection-section,
     .impact-section {
-        padding: 4rem 1rem;
+        padding: 2rem 1rem;
     }
 }
 
@@ -346,4 +382,20 @@ cite {
 .goal-card:hover,
 .concept-card:hover {
     transform: translateY(-5px);
+}
+
+.concept-card {
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.concept-card h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 1rem;
 } 

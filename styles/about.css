@@ -1,3 +1,4 @@
+
 .flex-block {
     display: flex;
     padding-top: 40px;
@@ -35,13 +36,6 @@
 
 .image-29, .image-30 {
     max-width: 100%;
-}
-
-.project-description-2 {
-    margin-top: 20px;
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 300;
 }
 
 .project-description-2 span {
