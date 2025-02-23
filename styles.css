@@ -193,8 +193,8 @@ h1 {
 }
 
 h2 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    /* margin-bottom: 1rem; */
 }
 
 h3 {
@@ -204,21 +204,23 @@ h3 {
 
 /* Update paragraph styles to match about page */
 p {
-    font-size: 14px;
+    font-size: 1rem;
     color: var(--text-primary);
     margin-bottom: 20px;
     text-align: left;
-    font-weight: 300;
+    font-weight: 200;
     font-family: 'ABCMonumentGrotesk', sans-serif;
+    color: grey;
 }
 
 /* Keep special paragraph styles */
 .section-lead {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 400;
     margin-bottom: 1rem;
     width: 75%;
     color: var(--text-primary);
+    line-height: 1.2;
 }
 
 /* Keep dark section paragraph color override */
@@ -230,8 +232,8 @@ p {
 .dark {
     background: var(--surface-dark);
     color: var(--text-light);
-    margin: 4rem 0;
-    padding: 6rem 2rem;
+    margin: 2rem 0;
+    padding: 6rem 12rem;
 }
 
 .dark .section-lead {
@@ -333,7 +335,7 @@ cite {
     }
     
     h2 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     
     .section-lead {
@@ -398,4 +400,18 @@ cite {
     margin-bottom: 0;
     font-weight: 300;
     font-size: 1rem;
+}
+
+.image-text-container {
+    display: flex;
+    width: 100%;
+}
+
+.image-text-container img {
+    flex: 1;
+}
+
+.image-text-container .text-content {
+    flex: 1;
+    padding-left: 20px;
 } 
