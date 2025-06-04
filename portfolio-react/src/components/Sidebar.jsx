@@ -276,7 +276,7 @@ const Sidebar = () => {
                 zIndex: 10,
               }}
             >
-              <WaveText text="AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH! ! ! ! " />
+              <WaveText text="!@$#%@!!!$!%#@#^!!!#&#@*!! " />
             </span>
           )}
         </div>

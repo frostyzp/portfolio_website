@@ -265,3 +265,20 @@ img, video {
     padding: 1rem;
   }
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.7rem;
+  color: var(--grey-color);
+  font-family: 'CommitMono';
+  text-transform: uppercase;
+}
+
+footer p {
+  font-size: 0.7rem;
+}
