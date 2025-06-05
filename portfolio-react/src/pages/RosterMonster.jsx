@@ -1,10 +1,15 @@
 import usePageTitle from '../hooks/usePageTitle';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const RosterMonster = () => {
   usePageTitle('Roster Monster');
 
   return (
     <div className="content">
+      <Link to="/" className="sticky-back-btn" aria-label="Back to home">
+        ← Back
+      </Link>
       <section className="section hero-section">
         <video src="/case-studies/ogp_cs.mp4" autoPlay loop muted playsInline />
       </section>
@@ -174,6 +179,8 @@ const RosterMonster = () => {
         </div>
         <img src="/ogp/ogp_inperson.png" alt="In-person testing" className="solution-video rounded-img" />
       </section>
+      
+      <Footer />
     </div>
   );
 };

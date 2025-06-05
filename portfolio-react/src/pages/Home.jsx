@@ -1,7 +1,97 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import usePageTitle from '../hooks/usePageTitle';
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import Footer from '../components/Footer';
+import { keyframes } from '@emotion/react';
+
+// Cloud movement keyframes with 3 different speeds
+const cloudSlow = keyframes`
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0;
+  }
+`;
+
+const cloudMedium = keyframes`
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0;
+  }
+`;
+
+const cloudFast = keyframes`
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(100vw + 200px));
+    opacity: 0;
+  }
+`;
+
+const CloudContainer = styled.div`
+  position: fixed;
+  top: ${props => props.top}%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1;
+  color: rgba(150, 150, 150, 0.6);
+  white-space: pre;
+  animation: ${props => {
+    switch(props.speed) {
+      case 'slow': return cloudSlow;
+      case 'medium': return cloudMedium;
+      case 'fast': return cloudFast;
+      default: return cloudMedium;
+    }
+  }} ${props => {
+    switch(props.speed) {
+      case 'slow': return '45s';
+      case 'medium': return '35s';
+      case 'fast': return '25s';
+      default: return '18s';
+    }
+  }} linear infinite;
+`;
+
+const CloudComponent = ({ cloud }) => (
+  <CloudContainer top={cloud.top} speed={cloud.speed} key={cloud.id}>
+    {cloud.ascii}
+  </CloudContainer>
+);
 
 const SIDEBAR_WIDTH = '18vw';
 
@@ -157,8 +247,8 @@ const getHoverStyles = (noHover) => {
 const ImageTextContainerGrid = styled.div`
   display: grid;
   grid-template-columns: ${({ columns }) => columns || '1fr 1fr'};
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
   align-items: stretch;
 
   img, video {
@@ -235,9 +325,68 @@ function InteractiveLink({ children }) {
 const Home = () => {
   usePageTitle('Arin Pantja');
 
+  const [clouds, setClouds] = useState([]);
+  
+  const cloudAsciiArt = [
+    `     (  ).                   _           
+             (     ).              .:(  ).       
+)           _(       \`.          :(   .    )      
+        .=((      .   )     .--  \`.  (    ) )      
+       ((    (..__.:'-'`,
+    `       _   _   _   _
+     ( '-' ) ( '-' ) ( '-' )
+    o_)   (_o_)   (_o_)   (_
+      ~~~     ~~~     ~~~`,
+    `        .~.
+       ( o o )
+      (   ^   )
+       \`-----'`,
+    `    ___     ___     ___
+   (   )   (   )   (   )
+  (  ___) (  ___) (  ___)
+   \\___/   \\___/   \\___/`,
+    `  ☁️  ☁️    ☁️
+    ☁️    ☁️  ☁️
+  ☁️  ☁️    ☁️  ☁️`
+  ];
+
+  const speeds = ['slow', 'medium', 'fast'];
+
+  useEffect(() => {
+    const spawnCloud = () => {
+      const newCloud = {
+        id: Date.now() + Math.random(),
+        ascii: cloudAsciiArt[Math.floor(Math.random() * cloudAsciiArt.length)],
+        top: Math.random() * 60 + 10, // Random position between 10% and 70% from top
+        speed: speeds[Math.floor(Math.random() * speeds.length)]
+      };
+
+      setClouds(prev => [...prev, newCloud]);
+
+      // Remove cloud after animation completes
+      setTimeout(() => {
+        setClouds(prev => prev.filter(cloud => cloud.id !== newCloud.id));
+      }, 50000); // Remove after 50 seconds (longer than longest animation)
+    };
+
+    // Spawn initial cloud
+    spawnCloud();
+
+    // Spawn new cloud every 8 seconds
+    const interval = setInterval(spawnCloud, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Content>
-      <ImageTextContainerTitle>PLAY AREA</ImageTextContainerTitle>
+    <>
+      {/* Render flying clouds */}
+      {clouds.map(cloud => (
+        <CloudComponent key={cloud.id} cloud={cloud} />
+      ))}
+      
+      <Content>
+      {/* <ImageTextContainerTitle>PLAY AREA</ImageTextContainerTitle>
 
       <ImageTextContainerGrid columns="1fr">
         <InteractiveLink>
@@ -247,11 +396,11 @@ const Home = () => {
             </TextRow>
           </ImageText>
         </InteractiveLink>
-      </ImageTextContainerGrid>
+      </ImageTextContainerGrid> */}
 
 
 {/* –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */}
-      <hr className="divider2" />
+      {/* <hr className="divider2" /> */}
       {/* <ImageTextContainerTitle>INTERACTION DESIGN</ImageTextContainerTitle> */}
 
       {/* Case Studies: 25/25/50 row layout */}
@@ -274,7 +423,7 @@ const Home = () => {
             <video src="/main_img/kurakura_main.mp4" autoPlay loop muted />
           </div>
         </CaseStudyRow>
-        <CaseStudyRow to="/title3">
+        <CaseStudyRow to="/ogp-illustration-guidelines">
           <CaseStudyCell>
             <p>Illustration Guidelines</p>
             <p>Streamlining illustration craft through guidelines for Singapore government products</p>
@@ -388,14 +537,9 @@ const Home = () => {
         </InteractiveLink>
       </ImageTextContainerGrid>
 
-
-      <footer> 
-        <p>Arin Pantja 2025</p>
-        <p>⸜( ´ ꒳ ` )⸝	 Last updated May 2025</p>
-      </footer>
-
-
+      <Footer />
     </Content>
+    </>
   );
 };
 

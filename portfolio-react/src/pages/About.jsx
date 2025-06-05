@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import usePageTitle from '../hooks/usePageTitle';
+import { Link } from 'react-router-dom';
 
 const AboutContainer = styled.div`
   margin-left: 300px;
   padding: 2rem;
+  position: relative;
 `;
 
 const FlexBlock = styled.div`
@@ -14,6 +16,7 @@ const FlexBlock = styled.div`
 
 const AboutDiv = styled.div`
   max-width: 800px;
+  align-items: center;
 `;
 
 const BodyParagraph = styled.h2`
@@ -29,51 +32,75 @@ const GridIllustration = styled.div`
 
 const ProfileImage = styled.img`
   width: 100%;
-  max-width: 400px;
+  max-width: 25vw;
   height: auto;
   margin-bottom: 1rem;
+  align-items: center;
+  
 `;
 
 const HighlightSpan = styled.span`
   font-weight: bold;
 `;
 
+const workExperience = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+.work-experience-role {
+  font-size: 0.8rem;
+  color: #666;
+}
+`;
+
 const About = () => {
   usePageTitle('About - Arin P.');
 
   return (
-    <AboutContainer>
-      <FlexBlock>
-        <AboutDiv>
-          <BodyParagraph>Work</BodyParagraph>
-          <GridIllustration>
-            {/* Add your work grid items here */}
-          </GridIllustration>
-        </AboutDiv>
-        
-        <AboutDiv>
-          <ProfileImage 
-            src="https://cdn.prod.website-files.com/6379e0162913f9848d3be654/657357a2ed2b085995153385_Screenshot%202023-12-08%20at%2012.51.06%20PM.png"
-            alt="Arin's profile"
-            loading="lazy"
-          />
-          <p>
-            I design with the intention to <HighlightSpan>provoke meaningful conversations & craft meaningful experiences</HighlightSpan> around the way people engage with each other, technology, and our future.
-            <br/><br/>
-            I'm currently pursuing Fine Arts + HCI majors at Carnegie Mellon University (CMU). I was previously part of a startup as the Product Lead & Designer. I'm also the co-president of the CMU Futurist Club, exploring the future of Play and LEGO with various stakeholders.
-            <br/><br/>
-            I am particularly interested in experience design, motion design, strategic thinking, and games.
-          </p>
-        </AboutDiv>
-        
-        <AboutDiv>
-          <BodyParagraph>Life</BodyParagraph>
-          <GridIllustration>
-            {/* Add your life grid items here */}
-          </GridIllustration>
-        </AboutDiv>
-      </FlexBlock>
-    </AboutContainer>
+    <div className="content">
+     <Link to="/" className="sticky-back-btn" aria-label="Back to home">
+       ← Back
+     </Link>
+        <BodyParagraph>Work</BodyParagraph>
+        <GridIllustration>
+          {/* Add your work grid items here */}
+        </GridIllustration>
+      
+      <AboutDiv>
+        <ProfileImage 
+          src="https://cdn.prod.website-files.com/6379e0162913f9848d3be654/657357a2ed2b085995153385_Screenshot%202023-12-08%20at%2012.51.06%20PM.png"
+          alt="Arin's profile"
+          loading="lazy"
+        />
+        <p>
+       I explore technologically mediated experiences and tools through interfaces and creative technologies, grounded in curiosity, speculation, and critical inquiry.
+       <br/><br/>
+       
+        </p>
+      </AboutDiv>
+
+
+        <workExperience>
+          <span>Kura Kura</span>
+          <span className='work-experience-role'>Product Lead</span>
+
+          <span>– Present</span>
+        </workExperience>      
+<br/>
+        <workExperience>
+          <a href="https://www.open.gov.sg/" target="_blank" rel="noopener noreferrer">Open Govt Products</a>
+          <span className='work-experience-role'>Product Designer</span>
+          <span>2024</span>
+        </workExperience> 
+      
+      <AboutDiv>
+        {/* <BodyParagraph>Life</BodyParagraph> */}
+        <GridIllustration>
+          {/* Add your life grid items here */}
+        </GridIllustration>
+      </AboutDiv>
+   </div>
   );
 };
 

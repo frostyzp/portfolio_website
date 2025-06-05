@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { keyframes, Global, css } from '@emotion/react';
 import { useState } from 'react';
+import { motion } from "framer-motion";
+
 
 const glowAnimation = keyframes`
   0% {
@@ -160,15 +162,14 @@ const StyledLink = styled(Link)`
   position: relative;
 
   &:hover {
-    text-shadow: 0 0 5px rgb(250, 207, 207);
-    color: rgb(237, 154, 154);
+    // text-shadow: 0 0 5px rgb(120, 120, 120);
+    color: rgb(99, 99, 99);
     transform: translateX(5px); // <-- make it more obvious
-    // background: light-grey; 
   }
 
   .link-image {
     position: absolute;
-    right: -32px;
+    right: -24px;
     top: 50%;
     transform: translateY(-50%) translateX(-10px) rotate(-1deg);
     opacity: 0;
@@ -182,7 +183,7 @@ const StyledLink = styled(Link)`
 
   &:hover .link-image {
     opacity: 1;
-    transform: translateY(-50%) translateX(0) rotate(12deg);
+    transform: translateY(-50%) translateX(0) rotate(16deg);
   }
 
   &:hover .link-text {
@@ -198,8 +199,8 @@ const StyledAnchor = styled.a`
   position: relative;
 
   &:hover {
-    text-shadow: 0 0 5px rgb(250, 207, 207);
-    color: rgb(237, 154, 154);
+    // text-shadow: 0 0 5px rgb(207, 207, 207);
+    color: rgb(99, 99, 99);
     transform: translateX(5px);
   }
 
@@ -227,6 +228,32 @@ const StyledAnchor = styled.a`
   }
 `;
 
+// Add Framer Motion variants for staggered animation
+const listVariants = {
+  hidden: { delay: 5.5, opacity: 0, y: 2 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 1,
+      ease: "easeOut",
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 3 },
+  visible: { opacity: 1, y: 0, ease: "easeInOut" },
+};
+
+const fadeIn = {
+  hidden: { delay: 4, opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeInOut" } },
+};
+
+const MotionHeaders = motion(Headers);
+
 const Sidebar = () => {
   const [kaomojiHovered, setKaomojiHovered] = useState(false);
   return (
@@ -235,8 +262,8 @@ const Sidebar = () => {
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <defs>
           <filter id="distort">
-            <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="noise">
-              <animate attributeName="baseFrequency" values="0.02;0.03" keyTimes="0;1" dur="4s" repeatCount="indefinite" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="6" result="noise">
+              <animate attributeName="baseFrequency" values="0.02;0.06" keyTimes="0;1" dur="4s" repeatCount="indefinite" />
             </feTurbulence>
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
           </filter>
@@ -280,53 +307,59 @@ const Sidebar = () => {
             </span>
           )}
         </div>
-        <p>Arin is a product & motion designer that crafts interfaces, interactions, and playful experiences ツ</p>
-        <p>Currently based in NYC.</p>
-    {/*       
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span>Kura Kura</span>
-          <span>– Present</span>
-        </div>      
+        <motion.p
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+        >Arin is a product & motion designer that crafts interfaces, interactions, and playful experiences ツ</motion.p>
+        <motion.p
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+        >Currently based in NYC.</motion.p>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <a href="https://www.open.gov.sg/" target="_blank" rel="noopener noreferrer">Open Govt Products</a>
-          <span>2024</span>
-        </div> */}
       
         <Contact>
         </Contact>
 
         <hr className="divider2" />
 
-        <Headers>INTERACTION DESIGN</Headers>
-        <ul
+        <MotionHeaders
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+        >INTERACTION DESIGN</MotionHeaders>
+        <motion.ul
           style={{ listStyle: "none", padding: 0, margin: 0 }}
+          variants={listVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <li>
+          <motion.li variants={itemVariants}>
             <StyledLink to="/roster-monster">
               <span className="link-text">Roster Monster</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/arrow.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledLink>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <StyledLink to="/kura-kura">
               <span className="link-text">Kura Kura</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/arrow.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledLink>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <StyledLink to="/ogp-illustration-guidelines">
               <span className="link-text">Illustration Guidelines</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/arrow.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledLink>
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
 
         {/* <Headers>WEB / CODE</Headers> */}
         <ul
@@ -368,44 +401,60 @@ const Sidebar = () => {
         </ul>
 
 
-        <Headers>ETC.</Headers>
-        <ul
+        <MotionHeaders
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+        >ABOUT</MotionHeaders>
+        <motion.ul
           style={{ listStyle: "none", padding: 0, margin: 0 }}
+          variants={listVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <li>
+                    <motion.li variants={itemVariants}>
+            <StyledLink to="/about">
+              <span className="link-text">About Me</span>
+              <span className="link-image">
+                <img src="doodles/arrow.gif" alt="icon" style={{width: '24px', height: '24px'}} />
+              </span>
+            </StyledLink>
+          </motion.li>
+
+
+          <motion.li variants={itemVariants}>
             <StyledAnchor href="https://www.linkedin.com/in/arin-pantja/" target="_blank" rel="noopener noreferrer">
               <span className="link-text">Linkedin</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/linkedin.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledAnchor>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <StyledAnchor href="mailto:your@email.com">
               <span className="link-text">Email</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/email.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledAnchor>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <StyledAnchor href="https://x.com/arin_pantja" target="_blank" rel="noopener noreferrer">
-              <span className="link-text">Twitter</span>
+              <span className="link-text">Twitter/X</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/x.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledAnchor>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={itemVariants}>
             <StyledAnchor href="https://www.are.na/arin-p/channels" target="_blank" rel="noopener noreferrer">
               <span className="link-text">Are.na</span>
               <span className="link-image">
-                <img src="https://placehold.co/24x24" alt="icon" style={{width: '24px', height: '24px'}} />
+                <img src="doodles/arena.gif" alt="icon" style={{width: '24px', height: '24px'}} />
               </span>
             </StyledAnchor>
-          </li>
-
-        </ul>
+          </motion.li>
+        </motion.ul>
       </SidebarContainer>
     </>
   );

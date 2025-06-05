@@ -3,8 +3,13 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import About from './pages/About';
 import RosterMonster from './pages/RosterMonster';
+import KuraKura from './pages/KuraKura';
+import Byos from './pages/Byos';
 import styled from '@emotion/styled';
 import ScrollToTop from './components/ScrollToTop';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 const AppContainer = styled.div`
   display: flex;
@@ -43,28 +48,40 @@ const TopGradientOverlay = styled.div`
 `;
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  
   return (
     <Router>
       <ScrollToTop />
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <filter id='roughpaper'>
-          <feTurbulence type="fractalNoise" baseFrequency='0.02' result='noise' numOctaves="5" />
-          <feDiffuseLighting in='noise' lighting-color='#fff' surfaceScale='2'>
+          <feTurbulence type="fractalNoise" baseFrequency='0.01' result='noise' numOctaves="5" />
+          <feDiffuseLighting in='noise' lightingColor='#fff' surfaceScale='2'>
             <feDistantLight azimuth='45' elevation='60' />
           </feDiffuseLighting>
         </filter>
       </svg>
-      <RoughPaperBg />
-      <TopGradientOverlay />
-      <AppContainer>
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/roster-monster" element={<RosterMonster />} />
-          {/* Add more routes here as we create more pages */}
-        </Routes>
-      </AppContainer>
+      <LoadingOverlay isVisible={isLoading} />
+        <RoughPaperBg />
+        <TopGradientOverlay />
+        <AppContainer>
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/roster-monster" element={<RosterMonster />} />
+            <Route path="/kura-kura" element={<KuraKura />} />
+            <Route path="/ogp-illustration-guidelines" element={<Byos />} />
+            {/* Add more routes here as we create more pages */}
+          </Routes>
+
+        </AppContainer>
     </Router>
   );
 }
